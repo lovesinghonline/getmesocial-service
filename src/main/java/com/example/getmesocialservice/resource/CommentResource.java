@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 @Resource
@@ -15,7 +16,7 @@ public class CommentResource {
     @Autowired
     private CommentService commentService;
     @PostMapping
-    public Comment saveComment(@RequestBody Comment comment){
+    public Comment saveComment(@RequestBody @Valid Comment comment){
         return commentService.saveComment(comment);
     }
     @GetMapping()
@@ -24,7 +25,7 @@ public class CommentResource {
         return commentService.getAllComment();
     }
     @PutMapping()
-    public Comment updateCommentById(@RequestBody Comment comment){
+    public Comment updateCommentById(@RequestBody @Valid Comment comment){
         return commentService. updateCommentById(comment);
     }
     @DeleteMapping

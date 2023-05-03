@@ -1,12 +1,16 @@
 package com.example.getmesocialservice.model;
 
+import com.example.getmesocialservice.validation.ValidName;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 
 public class Album {
 @Id
     private String id;
+@Length(max =10)
     private String name;
     private String coverUrl;
+    @ValidName
    private String createdBy;
 
     public String getId() {
@@ -15,6 +19,7 @@ public class Album {
 
     public Album(String id, String name, String coverUrl, String createdBy, String dateCreated) {
         this.id = id;
+
         this.name = name;
         this.coverUrl = coverUrl;
         this.createdBy = createdBy;

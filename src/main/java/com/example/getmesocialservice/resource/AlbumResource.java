@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 @Resource
 @RestController
@@ -16,7 +17,7 @@ public class AlbumResource {
     @Autowired
     private AlbumService albumService;
     @PostMapping
-    public Album saveAlbum(@RequestBody Album album){
+    public Album saveAlbum(@RequestBody @Valid Album album){
         return  albumService.saveAlbum(album);
     }
     @GetMapping()
@@ -25,7 +26,7 @@ public class AlbumResource {
         return albumService.getAllAlbum();
     }
     @PutMapping()
-    public Album updateAlbumById(@RequestBody Album album){
+    public Album updateAlbumById(@RequestBody @Valid Album album){
         return albumService. updateAlbumById(album);
     }
     @DeleteMapping

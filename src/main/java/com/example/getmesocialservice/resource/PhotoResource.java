@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 @Resource
@@ -17,7 +18,7 @@ public class PhotoResource {
     @Autowired
     private PhotoService photoService;
     @PostMapping
-    public Photo savePhoto(@RequestBody Photo photo){
+    public Photo savePhoto(@RequestBody @Valid Photo photo){
         return photoService.savePhoto(photo);
     }
     @GetMapping()
@@ -26,7 +27,7 @@ public class PhotoResource {
         return photoService.getAllPhoto();
     }
     @PutMapping()
-    public Photo updatePhotoById(@RequestBody Photo photo){
+    public Photo updatePhotoById(@RequestBody @Valid Photo photo){
         return photoService. updatePhotoById(photo);
     }
     @DeleteMapping

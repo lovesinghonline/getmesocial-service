@@ -4,12 +4,17 @@ import org.springframework.data.annotation.Id;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
 
 public class User {
 @Id
     private String id;
     private  String name;
+    @Email
     private String eamil;
+    @NotEmpty
     private String profilePicUrl;
     public String getName() {
         return name;
